@@ -1,8 +1,4 @@
 # demo-argocd
-Get base64 encode the entire JSON content for Auths
-```
-cat registry-auth.json | base64 -w 0
-```
 
 
 ## Getting started
