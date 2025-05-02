@@ -16,6 +16,6 @@ spec:
       - name: regcred
       containers:
       - name: sample-website1
-        image: hub.nexdev.net/nexops/sample_website1:LOCAL-67dc7831
+        image: hub.nexdev.net/nexops/sample_website1:LOCAL-410e8d62
         ports:
         - containerPort: 5000
