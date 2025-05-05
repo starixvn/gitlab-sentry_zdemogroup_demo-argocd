@@ -10,8 +10,7 @@ spec:
     targetRevision: mason
     path: teams/nexops/sample/website1
     kustomize:
-      enableHelm: true
-      loadRestrictor: LoadRestrictionsNone
+      namePrefix: sample-website1-
   destination:
     server: https://kubernetes.default.svc
     namespace: sample
