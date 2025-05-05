@@ -1,6 +1,6 @@
 apiVersion: v2
-name: registry-secret
-description: A Helm chart for managing registry credentials
+name: applications
+description: Applications
 
 # A chart can be either an 'application' or a 'library' chart.
 #

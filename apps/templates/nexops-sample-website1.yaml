@@ -6,11 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
-    targetRevision: mason
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
     path: teams/nexops/sample/website1
   destination:
-    server: https://kubernetes.default.svc
+    server: {{ .Values.spec.destination.server }}
     namespace: sample
   syncPolicy:
     automated:

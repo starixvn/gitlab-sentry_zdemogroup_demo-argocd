@@ -1,9 +1,0 @@
-image:
-  repository: hub.nexdev.net/nexops/sample_website1
-  tag: latest
-
-service:
-  port: 5000
-  targetPort: 5000
-
-replicaCount: 2 
