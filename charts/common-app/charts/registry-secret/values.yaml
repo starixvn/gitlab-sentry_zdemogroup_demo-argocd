@@ -11,4 +11,4 @@ registry:
 # Secret configuration
 secret:
   name: regcred
-  namespace: demo-app
+  namespace: common-app

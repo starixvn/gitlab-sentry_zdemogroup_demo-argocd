@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  common-app:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-05-05T15:18:29.1022776+07:00"
+    dependencies:
+    - name: registry-secret
+      repository: file://../registry-secret
+      version: 0.1.0
+    description: A Helm chart for Kubernetes
+    digest: 2be5080466bbccebc84363d88fc0d095dcbc4368614aaeaabc022aa9d873677a
+    name: common-app
+    type: application
+    urls:
+    - file:///drives/d/Source/Repos/demo-argocd/charts/common-app/common-app-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-05-05T15:18:29.0991363+07:00"
