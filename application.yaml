@@ -9,6 +9,8 @@ spec:
     repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
     targetRevision: mason
     path: apps/templates
+    helm:
+      releaseName: argocd-apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

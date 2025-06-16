@@ -1,6 +1,6 @@
 apiVersion: v2
-name: applications
-description: Applications
+name: argocd-apps
+description: ArgoCD Applications Chart
 
 # A chart can be either an 'application' or a 'library' chart.
 #
