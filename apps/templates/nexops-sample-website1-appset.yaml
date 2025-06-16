@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: nexops-sample-website1
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - env: prod
+            valuesFile: values-prod.yaml
+            namespace: sample-prod
+          - env: local
+            valuesFile: values-local.yaml
+            namespace: sample-local
+  template:
+    metadata:
+      name: 'nexops-sample-website1-{{env}}'
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: {{ .Values.spec.source.repoURL }}
+        targetRevision: {{ .Values.spec.source.targetRevision }}
+        path: teams/nexops/sample/website1
+        helm:
+          valueFiles:
+            - values.yaml
+            - '{{valuesFile}}'
+      destination:
+        server: {{ .Values.spec.destination.server }}
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true 
