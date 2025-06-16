@@ -1,26 +1,29 @@
-{{- range .Values.environments }}
+{{- range .Values.applications }}
+{{- range .environments }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nexops-sample-website1-{{ .name }}
+  name: {{ $.name }}-{{ .name }}
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: {{ $.Values.spec.source.repoURL }}
     targetRevision: {{ $.Values.spec.source.targetRevision }}
-    path: teams/nexops/sample/website1
+    path: {{ $.path }}
     helm:
-      valueFiles:
-        - values-{{ .name }}.yaml
+      values: |
+        image:
+          tag: {{ .image.tag }}
   destination:
     server: {{ $.Values.spec.destination.server }}
-    namespace: sample
+    namespace: {{ $.namespace }}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+{{- end }}
 {{- end }} 

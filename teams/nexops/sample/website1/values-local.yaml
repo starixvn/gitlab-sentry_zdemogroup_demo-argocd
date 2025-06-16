@@ -1,5 +1,0 @@
-image:
-  tag: LOCAL-latest
-
-service:
-  port: 3000

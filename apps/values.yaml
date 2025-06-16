@@ -6,6 +6,17 @@ spec:
     targetRevision: mason
   registry:
     auth: bWFzb24ubGU6UXVhbmxoQDA5OA==
-environments:
-  - name: local
-  - name: prod
+applications:
+  - name: website1
+    path: teams/nexops/sample/website1
+    namespace: sample
+    environments:
+      - name: local1
+        image:
+          tag: LOCAL-latest
+      - name: local3
+        image:
+          tag: LOCAL_3-latest
+      - name: prod
+        image:
+          tag: PROD-latest
