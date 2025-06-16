@@ -11,7 +11,7 @@ applications:
     path: teams/nexops/sample/website1
     namespace: sample
     environments:
-      - name: local1
+      - name: local
         image:
           tag: LOCAL-latest
       - name: local3

@@ -1,24 +1,24 @@
-{{- range .Values.applications }}
-{{- range .environments }}
+{{- range $app := .Values.applications }}
+{{- range $env := $app.environments }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $.name }}-{{ .name }}
+  name: {{ $app.name }}-{{ $env.name }}
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: {{ $.Values.spec.source.repoURL }}
     targetRevision: {{ $.Values.spec.source.targetRevision }}
-    path: {{ $.path }}
+    path: {{ $app.path }}
     helm:
       values: |
         image:
-          tag: {{ .image.tag }}
+          tag: {{ $env.image.tag }}
   destination:
     server: {{ $.Values.spec.destination.server }}
-    namespace: {{ $.namespace }}
+    namespace: {{ $app.namespace }}
   syncPolicy:
     automated:
       prune: true
