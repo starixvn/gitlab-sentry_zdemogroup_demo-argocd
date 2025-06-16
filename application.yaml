@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
     targetRevision: mason
-    path: apps/templates
+    path: apps
     helm:
       releaseName: argocd-apps
   destination:
