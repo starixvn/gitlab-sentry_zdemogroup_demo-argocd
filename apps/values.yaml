@@ -6,3 +6,6 @@ spec:
     targetRevision: mason
   registry:
     auth: bWFzb24ubGU6UXVhbmxoQDA5OA==
+environments:
+  - name: local
+  - name: prod
