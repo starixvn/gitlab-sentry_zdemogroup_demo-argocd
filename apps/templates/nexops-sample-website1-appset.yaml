@@ -15,7 +15,7 @@ spec:
             namespace: sample-local
   template:
     metadata:
-      name: nexops-sample-website1-{{env}}
+      name: 'nexops-sample-website1-{{.env}}'
       namespace: argocd
     spec:
       project: default
@@ -26,10 +26,10 @@ spec:
         helm:
           valueFiles:
             - values.yaml
-            - '{{valuesFile}}'
+            - '{{.valuesFile}}'
       destination:
         server: '{{ .Values.spec.destination.server }}'
-        namespace: '{{namespace}}'
+        namespace: '{{.namespace}}'
       syncPolicy:
         automated:
           prune: true
