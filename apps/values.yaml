@@ -7,7 +7,7 @@ spec:
   registry:
     auth: bWFzb24ubGU6UXVhbmxoQDA5OA==
 applications:
-  - name: website1
+  - name: nexops-sample-website1
     path: teams/nexops/sample/website1
     namespace: sample
     environments:
