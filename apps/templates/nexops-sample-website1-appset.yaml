@@ -8,16 +8,12 @@ spec:
     - list:
         elements:
           - env: prod
-            valuesFile: values-prod.yaml
-            namespace: sample-prod
             path: teams/nexops/sample/website1
           - env: local
-            valuesFile: values-local.yaml
-            namespace: sample-local
             path: teams/nexops/sample/website1
   template:
     metadata:
-      name: 'nexops-sample-website1-{{env}}'
+      name: 'nexops-sample-website1-{{.env}}'
       namespace: argocd
     spec:
       project: default
@@ -27,11 +23,11 @@ spec:
         path: '{{path}}'
         helm:
           valueFiles:
-            - '{{path}}/values.yaml'
-            - '{{path}}/{{valuesFile}}'
+            - '{{.path}}/values.yaml'
+            - '{{.path}}/values-{{.env}}.yaml'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{namespace}}'
+        namespace: sample
       syncPolicy:
         automated:
           prune: true
