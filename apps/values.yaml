@@ -4,3 +4,5 @@ spec:
   source:
     repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
     targetRevision: mason
+  registry:
+    auth: bWFzb24ubGU6UXVhbmxoQDA5OA==
