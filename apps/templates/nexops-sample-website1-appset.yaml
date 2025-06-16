@@ -20,7 +20,7 @@ spec:
       source:
         repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
         targetRevision: mason
-        path: '{{path}}'
+        path: '{{.path}}'
         helm:
           valueFiles:
             - '{{.path}}/values.yaml'
