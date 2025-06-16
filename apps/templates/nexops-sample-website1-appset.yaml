@@ -15,20 +15,20 @@ spec:
             namespace: sample-local
   template:
     metadata:
-      name: 'nexops-sample-website1-{{env}}'
+      name: nexops-sample-website1-{{env}}
       namespace: argocd
     spec:
       project: default
       source:
-        repoURL: {{ .Values.spec.source.repoURL }}
-        targetRevision: {{ .Values.spec.source.targetRevision }}
+        repoURL: '{{ .Values.spec.source.repoURL }}'
+        targetRevision: '{{ .Values.spec.source.targetRevision }}'
         path: teams/nexops/sample/website1
         helm:
           valueFiles:
             - values.yaml
             - '{{valuesFile}}'
       destination:
-        server: {{ .Values.spec.destination.server }}
+        server: '{{ .Values.spec.destination.server }}'
         namespace: '{{namespace}}'
       syncPolicy:
         automated:
