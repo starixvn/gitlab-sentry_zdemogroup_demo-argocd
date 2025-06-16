@@ -1,2 +1,5 @@
 image:
   tag: PROD-latest
+
+service:
+  port: 5000
