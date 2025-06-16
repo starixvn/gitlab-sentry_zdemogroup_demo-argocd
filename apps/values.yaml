@@ -37,6 +37,6 @@ applications:
       - name: local2
         image:
           tag: LOCAL_2-latest
-      - name: prod
-        image:
-          tag: PROD-latest
+      # - name: prod
+      #   image:
+      #     tag: PROD-latest
