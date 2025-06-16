@@ -20,3 +20,23 @@ applications:
       - name: prod
         image:
           tag: PROD-latest
+  - name: nexops-sample-website2
+    path: teams/nexops/sample/website2
+    namespace: sample
+    environments:
+      - name: local2
+        image:
+          tag: LOCAL_2-latest
+      - name: prod1
+        image:
+          tag: PROD_1-latest
+  - name: nexpe-ndict-site
+    path: teams/nexpe/ndict/site
+    namespace: nexpe
+    environments:
+      - name: local2
+        image:
+          tag: LOCAL_2-latest
+      - name: prod
+        image:
+          tag: PROD-latest
