@@ -6,7 +6,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $ns.name }}-{{ $app.name }}-{{ $env.name }}
-  namespace: {{ $ns.name }}
+  namespace: argocd
   labels:
     team: {{ $ns.team }}
     namespace: {{ $ns.name }}
