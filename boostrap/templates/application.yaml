@@ -1,18 +1,18 @@
-{{- range $namespace := .Values.namespaces }}
-{{- range $app := $namespace.applications }}
+{{- range $ns := .Values.namespaces }}
+{{- range $app := $ns.applications }}
 {{- range $env := $app.environments }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $namespace.name }}-{{ $app.name }}-{{ $env.name }}
-  namespace: argocd
+  name: {{ $ns.name }}-{{ $app.name }}-{{ $env.name }}
+  namespace: {{ $ns.name }}
   labels:
-    team: {{ $namespace.team }}
-    namespace: {{ $namespace.name }}
+    team: {{ $ns.team }}
+    namespace: {{ $ns.name }}
     environment: {{ $env.name }}
 spec:
-  project: {{ $namespace.team }}
+  project: {{ $ns.team }}
   source:
     repoURL: {{ $.Values.spec.source.repoURL }}
     targetRevision: {{ $.Values.spec.source.targetRevision }}
@@ -24,7 +24,7 @@ spec:
         {{- end }}
   destination:
     server: {{ $.Values.spec.destination.server }}
-    namespace: {{ $namespace.name }}
+    namespace: {{ $ns.name }}
   syncPolicy:
     automated:
       prune: true
