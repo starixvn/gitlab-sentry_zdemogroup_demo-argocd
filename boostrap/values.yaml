@@ -1,0 +1,70 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
+    targetRevision: mason
+  registry:
+    auth: bWFzb24ubGU6UXVhbmxoQDA5OA==
+
+namespaces:
+  - name: sample
+    team: nexops
+    applications:
+      - name: sample-website1
+        path: applications/sample/website1
+        environments:
+          - name: local
+            values:
+              replicaCount: 1
+              resources:
+                requests:
+                  memory: "128Mi"
+                  cpu: "100m"
+              image:
+                tag: LOCAL-latest
+          - name: prod
+            values:
+              replicaCount: 3
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "200m"
+              image:
+                tag: PROD-latest
+      - name: sample-website2
+        path: applications/sample/website2
+        environments:
+          - name: local2
+            values:
+              replicaCount: 1
+              resources:
+                requests:
+                  memory: "128Mi"
+                  cpu: "100m"
+              image:
+                tag: LOCAL_2-latest
+          - name: prod1
+            values:
+              replicaCount: 3
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "200m"
+              image:
+                tag: PROD_1-latest
+
+  - name: nexpe
+    team: nexpe
+    applications:
+      - name: ndict-site
+        path: applications/nexpe/ndict/site
+        environments:
+          - name: local
+            values:
+              image:
+                tag: LOCAL-latest
+          - name: nexprod
+            values:
+              image:
+                tag: NEXPROD-latest 

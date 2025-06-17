@@ -1,24 +1,30 @@
-{{- range $app := .Values.applications }}
+{{- range $namespace := .Values.namespaces }}
+{{- range $app := $namespace.applications }}
 {{- range $env := $app.environments }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $app.name }}-{{ $env.name }}
+  name: {{ $namespace.name }}-{{ $app.name }}-{{ $env.name }}
   namespace: argocd
+  labels:
+    team: {{ $namespace.team }}
+    namespace: {{ $namespace.name }}
+    environment: {{ $env.name }}
 spec:
-  project: default
+  project: {{ $namespace.team }}
   source:
     repoURL: {{ $.Values.spec.source.repoURL }}
     targetRevision: {{ $.Values.spec.source.targetRevision }}
     path: {{ $app.path }}
     helm:
       values: |
-        image:
-          tag: {{ $env.image.tag }}
+        {{- if $env.values }}
+        {{- toYaml $env.values | nindent 8 }}
+        {{- end }}
   destination:
     server: {{ $.Values.spec.destination.server }}
-    namespace: {{ $app.namespace }}
+    namespace: {{ $namespace.name }}
   syncPolicy:
     automated:
       prune: true
@@ -26,4 +32,5 @@ spec:
     syncOptions:
       - CreateNamespace=true
 {{- end }}
-{{- end }} 
+{{- end }}
+{{- end }}
