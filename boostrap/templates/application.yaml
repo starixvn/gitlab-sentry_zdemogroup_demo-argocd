@@ -12,7 +12,7 @@ metadata:
     namespace: {{ $ns.name }}
     environment: {{ $env.name }}
 spec:
-  project: {{ $ns.team }}
+  project: default
   source:
     repoURL: {{ $.Values.spec.source.repoURL }}
     targetRevision: {{ $.Values.spec.source.targetRevision }}
