@@ -1,0 +1,4 @@
+spec:
+  source:
+    repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd-apps.git
+    targetRevision: mason
