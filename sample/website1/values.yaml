@@ -1,4 +1,4 @@
-imagepullsecrets:
+regcred:
   imageCredentials:
     registry: oci://hub.nexdev.net/charts
     username: gitlab-ci
