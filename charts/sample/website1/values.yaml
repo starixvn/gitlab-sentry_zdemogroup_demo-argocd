@@ -3,3 +3,8 @@ k8sdeployments:
 
   image:
     name: hub.nexdev.net/nexops/sample_website1:LOCAL-latest
+
+  configFile:
+    path: /app/.
+    name: appsettings.json
+    content: {{ .Files.Get "appsettings.json" | nindent 6 }}
