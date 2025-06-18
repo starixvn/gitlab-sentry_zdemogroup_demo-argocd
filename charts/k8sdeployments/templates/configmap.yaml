@@ -8,7 +8,7 @@ metadata:
     app: {{ .Release.Name }}
 data:
 {{- if .Values.configFile }}
-  {{ .Values.configFile.name }}: |
+  {{ .Values.configFile.name }}: |-
     {{- if .Values.configFile.file }}
     {{- .Files.Get (printf "configs/%s" .Values.configFile.file) | nindent 4 }}
     {{- else }}
@@ -16,7 +16,7 @@ data:
     {{- end }}
 {{- end }}
 {{- if .Values.spFile }}
-  {{ .Values.spFile.name }}: |
+  {{ .Values.spFile.name }}: |-
     {{- if .Values.spFile.file }}
     {{- .Files.Get (printf "configs/%s" .Values.spFile.file) | nindent 4 }}
     {{- else }}
