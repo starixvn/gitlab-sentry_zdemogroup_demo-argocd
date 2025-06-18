@@ -18,6 +18,13 @@ spec:
       releaseName: sample-website1
       valueFiles:
         - values.yaml
+      parameters:
+        - name: imageCredentials.registry
+          value: oci://hub.nexdev.net/charts
+        - name: imageCredentials.username
+          value: gitlab-ci
+        - name: imageCredentials.password
+          value: H5nF5ywy262wt881ZWpq
   syncPolicy:
     automated:
       prune: true
