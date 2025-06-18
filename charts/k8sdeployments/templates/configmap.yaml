@@ -10,7 +10,7 @@ data:
 {{- if .Values.configFile }}
   {{ .Values.configFile.name }}: |
     {{- if .Values.configFile.file }}
-    {{- .Files.Get .Values.configFile.file | nindent 4 }}
+    {{- .Files.Get (printf "configs/%s" .Values.configFile.file) | nindent 4 }}
     {{- else }}
     {{- .Values.configFile.content | nindent 4 }}
     {{- end }}
@@ -18,7 +18,7 @@ data:
 {{- if .Values.spFile }}
   {{ .Values.spFile.name }}: |
     {{- if .Values.spFile.file }}
-    {{- .Files.Get .Values.spFile.file | nindent 4 }}
+    {{- .Files.Get (printf "configs/%s" .Values.spFile.file) | nindent 4 }}
     {{- else }}
     {{- .Values.spFile.content | nindent 4 }}
     {{- end }}
