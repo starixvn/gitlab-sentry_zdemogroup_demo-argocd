@@ -75,13 +75,13 @@ k8sdeployments:
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
     # targetMemoryUtilizationPercentage: 80
-  nodeSelector:
-    web: "yes"
-  tolerations:
-    - key: web
-      operator: "Equal"
-      value: "yes"
-      effect: "NoSchedule"
+  # nodeSelector:
+  #   web: "yes"
+  # tolerations:
+  #   - key: web
+  #     operator: "Equal"
+  #     value: "yes"
+  #     effect: "NoSchedule"
   affinity: {}
   podAnnotations: {}
   podSecurityContext: {}
