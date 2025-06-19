@@ -35,7 +35,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       imagePullSecrets:
-        - name: {{ .Values.image.pullSecretName }}
+        - name: {{ .Release.Name }}-{{ .Values.image.pullSecretName }}
       containers:
         - name: {{ .Release.Name }}
           securityContext:
