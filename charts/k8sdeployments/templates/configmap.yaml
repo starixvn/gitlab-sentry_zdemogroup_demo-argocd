@@ -9,22 +9,10 @@ metadata:
 data:
 {{- if .Values.configFile }}
   {{ .Values.configFile.name }}: |-
-    {{- if .Values.configFile.content }}
     {{- .Values.configFile.content | nindent 4 }}
-    {{- else if .Values.configFile.file }}
-    {{- include "readConfigFile" (dict "root" . "file" .Values.configFile.file) }}
-    {{- else }}
-    {{- include "readConfigFile" (dict "root" . "file" "appsettings.json") }}
-    {{- end }}
 {{- end }}
 {{- if .Values.spFile }}
   {{ .Values.spFile.name }}: |-
-    {{- if .Values.spFile.content }}
     {{- .Values.spFile.content | nindent 4 }}
-    {{- else if .Values.spFile.file }}
-    {{- include "readConfigFile" (dict "root" . "file" .Values.spFile.file) }}
-    {{- else }}
-    {{- .Values.spFile.content | nindent 4 }}
-    {{- end }}
 {{- end }}
 {{- end }}

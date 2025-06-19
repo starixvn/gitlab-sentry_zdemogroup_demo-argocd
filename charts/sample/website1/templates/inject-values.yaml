@@ -1,0 +1,1 @@
+{{- $_ := set .Values.k8sdeployments "configFile" (dict "content" (.Files.Get "files/appsettings.json")) -}}
