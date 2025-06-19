@@ -3,6 +3,6 @@
 # Declare variables to be passed into your templates.
 
 imageCredentials:
-  registry: oci://hub.nexdev.net/charts
-  username: gitlab-ci
-  password: H5nF5ywy262wt881ZWpq
+  registry: ""
+  username: ""
+  password: ""
