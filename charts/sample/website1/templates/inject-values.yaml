@@ -1,1 +1,3 @@
-{{- $_ := set .Values.k8sdeployments "configFile" (dict "content" (.Files.Get "files/appsettings.json")) -}}
+{{- $cf := .Values.k8sdeployments.configFile | default (dict) -}}
+{{- $_ := set $cf "content" (.Files.Get "files/appsettings.json") -}}
+{{- $_ := set .Values.k8sdeployments "configFile" $cf -}}
