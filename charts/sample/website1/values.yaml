@@ -7,4 +7,5 @@ k8sdeployments:
   configFile:
     path: /app/.
     name: appsettings.json
-    file: appsettings.json
+    content: |-
+      {{ .Files.Get "appsettings.json" | nindent 4 }}
