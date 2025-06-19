@@ -8,11 +8,11 @@ metadata:
     app: {{ .Release.Name }}
 data:
 {{- if .Values.configFile }}
-  {{ .Values.configFile.name }}: |-
+  {{ .Values.configFile.name }}: |
     {{- .Values.configFile.content | nindent 4 }}
 {{- end }}
 {{- if .Values.spFile }}
-  {{ .Values.spFile.name }}: |-
+  {{ .Values.spFile.name }}: |
     {{- .Values.spFile.content | nindent 4 }}
 {{- end }}
 {{- end }}
