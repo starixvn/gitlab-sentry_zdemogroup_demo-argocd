@@ -26,7 +26,7 @@ appVersion: "1.16.0"
 dependencies:
   - name: imagepullsecrets
     version: 1.0.0
-    repository: "file://../../../_shared/imagepullsecrets"
+    repository: "https://gitlab.nexdev.net/NEXOPS/helm-charts/k8sdeployments.git//charts/imagepullsecrets"
   - name: k8sdeployments
     version: 1.3.1
-    repository: "file://../../../_shared/k8sdeployments"
+    repository: "https://gitlab.nexdev.net/NEXOPS/helm-charts/k8sdeployments.git//charts/k8sdeployments"
