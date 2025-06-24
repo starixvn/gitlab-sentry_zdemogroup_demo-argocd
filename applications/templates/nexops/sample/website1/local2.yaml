@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sample-website1-local2
+  name: sample-website1-LOCAL2
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -16,7 +16,7 @@ spec:
     targetRevision: mason
     helm:
       valueFiles:
-        - values_local2.yaml
+        - values_LOCAL2.yaml
   syncPolicy:
     automated:
       prune: true
