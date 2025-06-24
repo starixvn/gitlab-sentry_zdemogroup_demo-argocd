@@ -34,19 +34,19 @@ k8sdeployments:
     name: "appsettings.json"    
     content: |
       {
-    "Logging": {
-      "LogLevel": {
-        "Default": "Information",
-        "Microsoft": "Warning",
-        "Microsoft.Hosting.Lifetime": "Information"
+      "Logging": {
+        "LogLevel": {
+          "Default": "Information",
+          "Microsoft": "Warning",
+          "Microsoft.Hosting.Lifetime": "Information"
+        }
+      },
+      "AllowedHosts": "*",
+      "AppSettings": {
+        "SentryDsn": "http://d50bf7256dfd46219cd4f51e0d34e3b5@10.18.200.131:800/103",
+        "SentryEnvironment": "NexOps.Sample"
       }
-    },
-    "AllowedHosts": "*",
-    "AppSettings": {
-      "SentryDsn": "http://d50bf7256dfd46219cd4f51e0d34e3b5@10.18.200.131:800/103",
-      "SentryEnvironment": "NexOps.Sample"
     }
-  }
 
   spFile:
     path: "/app/App_Data"
