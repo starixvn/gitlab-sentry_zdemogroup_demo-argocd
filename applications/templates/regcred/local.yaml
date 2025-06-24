@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: regcred-local
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  labels:
+    environment: local
+    app: regcred
+spec:
+  destination:
+    namespace: sample
+    name: local
+  project: default
+  source:
+    path: charts/regcred
+    repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values-local.yaml
