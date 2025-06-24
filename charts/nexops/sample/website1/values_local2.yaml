@@ -48,9 +48,9 @@ k8sdeployments:
         }
       }
 
-  spFile:
-    path: "/app/App_Data"
-    name: "SpNames.xml"    
+  # spFile:
+  #   path: "/app/App_Data"
+  #   name: "SpNames.xml"    
 
 
   service:
