@@ -11,7 +11,7 @@ metadata:
 spec:
   destination:
     namespace: sample
-    server: https://kubernetes.default.svc
+    name: local
   project: default
   source:
     path: charts/atomix/sample/website2
