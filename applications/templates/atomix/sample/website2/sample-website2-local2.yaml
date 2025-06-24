@@ -20,9 +20,3 @@ spec:
     helm:
       valueFiles:
         - values-local2.yaml
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true 
