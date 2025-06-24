@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: charts/nexops/sample/website1
-    repoURL: gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
+    repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
     targetRevision: mason
     helm:
       valueFiles:
