@@ -82,7 +82,7 @@ k8sdeployments:
   ingress:
     enabled: true
     stickySessions: false
-    className: nginx
+    className: haproxy
     timeoutServer: 120
     hosts:
       - host: sample.nexdev.net
