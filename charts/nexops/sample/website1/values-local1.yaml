@@ -1,0 +1,135 @@
+
+
+############# k8s deployments values #############
+k8sdeployments:
+  replicaCount: 1
+  revisionHistoryLimit: 5
+  environment: local1
+
+  rollingUpdate:
+    maxSurge: 25%
+    maxUnavailable: 0
+
+  image:
+    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_1-39c05300"
+    pullPolicy: Always
+
+  healthCheck:
+    enabled: false
+    path: /
+    failureThreshold: 5
+    periodSeconds: 5
+    timeoutSeconds: 5
+    startupFailureThreshold: 30
+
+  configFile:
+    path: "/app/."
+    name: "appsettings.json"    
+    content: |
+      {
+        "Logging": {
+          "LogLevel": {
+            "Default": "Information",
+            "Microsoft": "Warning",
+            "Microsoft.Hosting.Lifetime": "Information"
+          }
+        },
+        "AllowedHosts": "*",
+        "AppSettings": {
+          "SentryDsn": "http://d50bf7256dfd46219cd4f51e0d34e3b5@10.18.200.131:800/103",
+          "SentryEnvironment": "NexOps.Sample"
+        }
+      }
+
+  spFile:
+    path: "/app/App_Data"
+    name: "SpNames.xml"    
+    content: |
+      <Functions>
+          <Function Name="Send Email after Auto Void">
+              <Setting Key="NAP_SpecialDelete_Message_Select" SpName="NAP_SpecialDelete_Message_Select" DbName="DBMSG.bodb_Message.bodbAdminNet" TimeOut="600" />
+              <Setting Key="NAP_SpecialDelete_Message_Insert" SpName="NAP_SpecialDelete_Message_Insert" DbName="DBMSG.bodb_Message.bodbAdminNet" TimeOut="600" />
+              <Setting Key="NAP_SpecialDelete_MatchInfo_Select" SpName="NAP_SpecialDelete_MatchInfo_Select" DbName="DBPRO.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_ReasonTemplate_Select" SpName="TicketVoiding_ReasonTemplate_Select" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_MessageTemplate_Select" SpName="TicketVoiding_MessageTemplate_Select" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_Email_VoidedTicket_Select" SpName="TicketVoiding_Email_VoidedTicket_Select" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_Email_OperatorInfo_Select" SpName="TicketVoiding_Email_OperatorInfo_Select" DbName="DBCUST.SiteConfig.bodbAdminNet" TimeOut="600" />
+              <Setting Key="Dot_Admin_message_new_insert" SpName="Dot_Admin_message_new_insert" DbName="DBONUSER.ON_USER.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_Reason_Select" SpName="TicketVoiding_Reason_Select" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_Reason_Insert" SpName="TicketVoiding_Reason_Insert" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_VoidedTransaction_Insert" SpName="TicketVoiding_VoidedTransaction_Insert" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="NAP_SpecialDelete_BatchMessage_Upload" SpName="NAP_SpecialDelete_BatchMessage_Upload" DbName="DBMSG.bodb_Message.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_VoidingHistory_Select" SpName="TicketVoiding_VoidingHistory_Select" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_VoidingHistory_Update" SpName="TicketVoiding_VoidingHistory_Update" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_MessageTemplate_SubIssueType_Select" SpName="TicketVoiding_MessageTemplate_SubIssueType_Select" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_Request_Select" SpName="TicketVoiding_Request_Select" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_RequestInfo_Select" SpName="TicketVoiding_RequestInfo_Select" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="SpecialDelete_MailingList_Select" SpName="SpecialDelete_MailingList_Select" DbName="DBOIC.bodb_OIC.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_VoidBetAutomation_Service_SelectAll" SpName="TicketVoiding_VoidBetAutomation_Service_SelectAll" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="TicketVoiding_VoidBetAutomation_Service_Upd" SpName="TicketVoiding_VoidBetAutomation_Service_Upd" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
+              <Setting Key="Odds_BetTypeSel" SpName="Odds_BetTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" TimeOut="600" />
+          </Function>
+      </Functions>
+
+
+  service:
+  # kind of types: ClusterIP, NodePort, LoadBalancer
+    type: ClusterIP
+    port: 5000
+    targetPort: 5000
+  #  nodePort:
+
+  ingress:
+    enabled: true
+    stickySessions: false
+    className: haproxy
+    hosts:
+      - host: m-sample1.nexdev.net
+        paths:
+          - path: /
+            pathType: Prefix
+
+
+
+  resources:
+    limits:
+      memory: 1024Mi
+    requests:
+      memory: 16Mi
+
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: false
+    # Annotations to add to the service account
+    annotations: {}
+
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+    # targetMemoryUtilizationPercentage: 80
+
+  nodeSelector:
+    web: "yes"
+
+  tolerations:
+    - key: web
+      operator: "Equal"
+      value: "yes"
+      effect: "NoSchedule"
+
+  affinity: {}
+
+  podAnnotations: {}
+
+  podSecurityContext: {}
+    # fsGroup: 2000
+
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
