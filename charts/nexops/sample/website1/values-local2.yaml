@@ -83,7 +83,6 @@ k8sdeployments:
     enabled: true
     stickySessions: false
     className: haproxy
-    timeoutServer: 120
     hosts:
       - host: sample.nexdev.net
         paths:
