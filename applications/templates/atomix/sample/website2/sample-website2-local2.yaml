@@ -4,9 +4,9 @@ metadata:
   name: sample-website2-local2
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
   labels:
-    environment: local2
+    environment: local
     app: website2
 spec:
   destination:
