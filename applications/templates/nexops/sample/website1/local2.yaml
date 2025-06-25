@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   labels:
-    app: website1
+    app: sample-website1
 spec:
   destination:
     namespace: sample
