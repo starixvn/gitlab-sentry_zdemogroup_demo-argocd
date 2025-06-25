@@ -11,7 +11,7 @@ k8sdeployments:
     maxUnavailable: 0
 
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_2-25ac8cd5"
+    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_2-e1e0224a"
     pullPolicy: Always
 
   healthCheck:
@@ -87,7 +87,7 @@ k8sdeployments:
     hosts:
       - host: sample.nexdev.net
         paths:
-          - path: /local-test-1234
+          - path: /
             pathType: Prefix
 
 
