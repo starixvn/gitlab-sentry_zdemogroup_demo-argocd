@@ -11,7 +11,7 @@ k8sdeployments:
     maxUnavailable: 0
 
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:SIT-c7c27b0b"
+    name: "hub.nexdev.net/nexops/sample_website1:SIT-62f59878"
     pullPolicy: Always
 
   healthCheck:
