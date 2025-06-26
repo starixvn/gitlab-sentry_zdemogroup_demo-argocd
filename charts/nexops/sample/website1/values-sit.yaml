@@ -85,10 +85,10 @@ k8sdeployments:
     # targetMemoryUtilizationPercentage: 80
 
   nodeSelector:
-    nexcel-app: "yes"
+    web: "yes"
 
   tolerations:
-    - key: nexcel-app
+    - key: web
       operator: "Equal"
       value: "yes"
       effect: "NoSchedule"
