@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-website2-sit1
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app: test-website2
+spec:
+  destination:
+    namespace: test
+    name: sit
+  project: default
+  source:
+    path: charts/nexops/test/website2
+    repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values-sit1.yaml
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
