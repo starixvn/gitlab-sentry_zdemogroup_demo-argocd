@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: test
-    name: sit
+    name: 
   project: default
   source:
     path: charts/nexops/test/website2
