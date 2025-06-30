@@ -13,6 +13,7 @@ k8sdeployments:
   image:
     name: "hub.nexdev.net/nexops/sample_website1:LOCAL_4-4ec8b770"
     pullPolicy: Always
+    pullSecretName: argocd-regcred-secret
 
   healthCheck:
     enabled: true
