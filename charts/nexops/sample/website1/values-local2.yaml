@@ -11,7 +11,7 @@ k8sdeployments:
     maxUnavailable: 0
 
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_2-4ec8b770"
+    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_2-deb53684"
     pullPolicy: Always
     pullSecretName: argocd-regcred-secret
 
@@ -80,6 +80,15 @@ k8sdeployments:
     targetPort: 5000
   #  nodePort:
 
+  ingress:
+    enabled: true
+    stickySessions: false
+    className: haproxy
+    hosts:
+      - host: sample1.nexdev.net
+        paths:
+          - path: /local2
+            pathType: Prefix
 
 
 
