@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test4-website2-local
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app: test4-website2
+spec:
+  destination:
+    namespace: test4
+    name: local
+  project: default
+  source:
+    path: charts/nexops/test4/website2
+    repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values-local.yaml
