@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test5-namespace-imagepullsecrets-local
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app: test5-namespace-imagepullsecrets
+spec:
+  destination:
+    namespace: test5
+    name: local
+  project: default
+  source:
+    path: charts/_shared/namespace-imagepullsecrets/test5
+    repoURL: https://gitlab.nexdev.net/gitlab-sentry/zdemogroup/demo-argocd.git
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values-local.yaml
