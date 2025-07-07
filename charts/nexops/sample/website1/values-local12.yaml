@@ -80,6 +80,15 @@ k8sdeployments:
     targetPort: 5000
   #  nodePort:
 
+  ingress:
+    enabled: true
+    stickySessions: false
+    className: haproxy
+    hosts:
+      - host: sample.nexdev.net
+        paths:
+          - path: /local12
+            pathType: Prefix
 
 
 
