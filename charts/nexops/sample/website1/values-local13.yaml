@@ -17,7 +17,7 @@ k8sdeployments:
 
   healthCheck:
     enabled: true
-    path: /
+    path: /failed
     failureThreshold: 5
     periodSeconds: 5
     timeoutSeconds: 5
