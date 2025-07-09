@@ -2,7 +2,7 @@
 
 ############# k8s deployments values #############
 k8sdeployments:
-  replicaCount: 2
+  replicaCount: 1
   revisionHistoryLimit: 5
   environment: local16
 
