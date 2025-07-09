@@ -2,7 +2,7 @@
 
 ############# k8s deployments values #############
 k8sdeployments:
-  replicaCount: 2
+  replicaCount: 1
   revisionHistoryLimit: 5
   environment: local14
 
@@ -11,13 +11,13 @@ k8sdeployments:
     maxUnavailable: 0
 
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_14-fd806475"
+    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_14-12342071"
     pullPolicy: Always
     pullSecretName: argocd-regcred-secret
 
   healthCheck:
     enabled: true
-    path: /failed
+    path: /
     failureThreshold: 5
     periodSeconds: 5
     timeoutSeconds: 5
