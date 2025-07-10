@@ -11,8 +11,9 @@ k8sdeployments:
     maxUnavailable: 0
 
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:SIT_2-470e23a1"
+    name: "hub.nexdev.net/nexops/sample_website1:SIT_2-0c7d971b"
     pullPolicy: Always
+    pullSecretName: argocd-regcred-secret
 
   healthCheck:
     enabled: true
