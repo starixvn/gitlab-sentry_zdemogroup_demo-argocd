@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sample1--local
+  name: sample1-website1-test-local
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   labels:
-    app: sample1-
+    app: sample1-website1-test
 spec:
   destination:
     namespace: sample1
