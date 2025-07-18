@@ -2,16 +2,16 @@
 
 ############# k8s deployments values #############
 k8sdeployments:
-  replicaCount: 1
+  replicaCount: 2
   revisionHistoryLimit: 5
   environment: local10
 
   rollingUpdate:
     maxSurge: 25%
-    maxUnavailable: 0
+    maxUnavailable: 1
 
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_10-0c7d971b"
+    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_10-e37ee1ab"
     pullPolicy: Always
     pullSecretName: argocd-regcred-secret
 
