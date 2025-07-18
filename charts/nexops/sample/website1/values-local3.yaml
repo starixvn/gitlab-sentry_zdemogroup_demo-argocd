@@ -2,7 +2,7 @@
 
 ############# k8s deployments values #############
 k8sdeployments:
-  replicaCount: 1
+  replicaCount: 2
   revisionHistoryLimit: 5
   environment: local3
 
@@ -80,6 +80,15 @@ k8sdeployments:
     targetPort: 5000
   #  nodePort:
 
+  ingress:
+    enabled: true
+    stickySessions: false
+    className: haproxy
+    hosts:
+      - host: sample.nexdev.net
+        paths:
+          - path: /local3
+            pathType: Prefix
 
 
 
@@ -103,10 +112,10 @@ k8sdeployments:
     # targetMemoryUtilizationPercentage: 80
 
   nodeSelector:
-    web: "yes"
+    nexcel-app: "yes"
 
   tolerations:
-    - key: web
+    - key: nexcel-app
       operator: "Equal"
       value: "yes"
       effect: "NoSchedule"
