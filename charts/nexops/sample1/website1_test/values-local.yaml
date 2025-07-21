@@ -11,7 +11,7 @@ k8sdeployments:
     maxUnavailable: 0
 
   image:
-    name: "hub.nexdev.net/nexops/sample1_website1_test:LOCAL-2797a2ed"
+    name: "hub.nexdev.net/nexops/sample1_website1_test:LOCAL-5ca0c2a7"
     pullPolicy: Always
     pullSecretName: argocd-regcred-secret
 
@@ -25,22 +25,18 @@ k8sdeployments:
 
   configFile:
     path: "/app/."
-    name: "appsettings.json"    
+    name: "c.js"    
     content: |
-      {
-        "Logging": {
-          "LogLevel": {
-            "Default": "Information",
-            "Microsoft": "Warning",
-            "Microsoft.Hosting.Lifetime": "Information"
-          }
-        },
-        "AllowedHosts": "*",
-        "AppSettings": {
-          "SentryDsn": "http://d50bf7256dfd46219cd4f51e0d34e3b5@10.18.200.131:800/103",
-          "SentryEnvironment": "NexOps.Sample"
-        }
-      }
+      window.envConfig = {
+          systemType: "VG",
+          ssl: true,
+          subDomain: "l2-proxy2",
+          env: "LOCAL2",
+          subGuideDomain: "l2-guide-2",
+          enableMsgpackParserAllGames: false,
+          enableMsgpackParserOnNotification: false,
+          SGConnectSubDomain: "l2-connect-2",
+      };
 
   spFile:
     path: "/app/App_Data"
