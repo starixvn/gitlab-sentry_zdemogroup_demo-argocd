@@ -2,7 +2,7 @@
 
 ############# k8s deployments values #############
 k8sdeployments:
-  replicaCount: 1
+  replicaCount: 2
   revisionHistoryLimit: 5
   environment: local16
 
@@ -10,8 +10,10 @@ k8sdeployments:
     maxSurge: 25%
     maxUnavailable: 1
 
+  rollme: L7cRY
+
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_16-62f59878"
+    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_16-875bd41d"
     pullPolicy: Always
     pullSecretName: argocd-regcred-secret
 
@@ -42,6 +44,7 @@ k8sdeployments:
         }
       }
 
+
   spFile:
     path: "/app/App_Data"
     name: "SpNames.xml"    
@@ -71,6 +74,7 @@ k8sdeployments:
               <Setting Key="Odds_BetTypeSel" SpName="Odds_BetTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" TimeOut="600" />
           </Function>
       </Functions>
+
 
 
   service:
