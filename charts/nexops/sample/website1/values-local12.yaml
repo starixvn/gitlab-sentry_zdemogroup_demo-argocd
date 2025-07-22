@@ -10,10 +10,10 @@ k8sdeployments:
     maxSurge: 25%
     maxUnavailable: 1
 
-  rollme: KJn1K
+  rollme: PgY85
 
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_12-c8326490"
+    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_12-0c7d971b"
     pullPolicy: Always
     pullSecretName: argocd-regcred-secret
 
@@ -44,6 +44,7 @@ k8sdeployments:
         }
       }
 
+
   spFile:
     path: "/app/App_Data"
     name: "SpNames.xml"    
@@ -73,6 +74,7 @@ k8sdeployments:
               <Setting Key="Odds_BetTypeSel" SpName="Odds_BetTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" TimeOut="600" />
           </Function>
       </Functions>
+
 
 
   service:
