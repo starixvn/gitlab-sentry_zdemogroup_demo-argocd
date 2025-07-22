@@ -10,7 +10,7 @@ k8sdeployments:
     maxSurge: 25%
     maxUnavailable: 1
 
-  rollme: f1bca
+  rollme: a9464
 
   image:
     name: "hub.nexdev.net/nexops/sample_website1:LOCAL_12-3d846efa"
