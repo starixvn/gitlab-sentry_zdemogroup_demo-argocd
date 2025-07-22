@@ -2,7 +2,7 @@
 
 ############# k8s deployments values #############
 k8sdeployments:
-  replicaCount: 2
+  replicaCount: 1
   revisionHistoryLimit: 5
   environment: local3
 
@@ -10,13 +10,15 @@ k8sdeployments:
     maxSurge: 25%
     maxUnavailable: 0
 
+  rollme: 773e4
+
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_3-62f59878"
+    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_3-e06ed9db"
     pullPolicy: Always
     pullSecretName: argocd-regcred-secret
 
   healthCheck:
-    enabled: true
+    enabled: false
     path: /
     failureThreshold: 5
     periodSeconds: 5
@@ -41,6 +43,7 @@ k8sdeployments:
           "SentryEnvironment": "NexOps.Sample"
         }
       }
+
 
   spFile:
     path: "/app/App_Data"
@@ -73,6 +76,7 @@ k8sdeployments:
       </Functions>
 
 
+
   service:
   # kind of types: ClusterIP, NodePort, LoadBalancer
     type: ClusterIP
@@ -80,21 +84,12 @@ k8sdeployments:
     targetPort: 5000
   #  nodePort:
 
-  ingress:
-    enabled: true
-    stickySessions: false
-    className: haproxy
-    hosts:
-      - host: sample.nexdev.net
-        paths:
-          - path: /local3
-            pathType: Prefix
 
 
 
   resources:
     limits:
-      memory: 2048Mi
+      memory: 1024Mi
     requests:
       memory: 16Mi
 
@@ -112,10 +107,10 @@ k8sdeployments:
     # targetMemoryUtilizationPercentage: 80
 
   nodeSelector:
-    nexcel-app: "yes"
+    web: "yes"
 
   tolerations:
-    - key: nexcel-app
+    - key: web
       operator: "Equal"
       value: "yes"
       effect: "NoSchedule"

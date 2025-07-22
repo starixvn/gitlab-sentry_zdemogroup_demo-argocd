@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: sample
-    name: local
+    name: k8s-starix-local
   project: rocketor
   source:
     path: charts/nexops/sample/website1
