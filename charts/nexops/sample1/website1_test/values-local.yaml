@@ -10,7 +10,7 @@ k8sdeployments:
     maxSurge: 25%
     maxUnavailable: 0
 
-  rollme: XALyo
+  rollme: D2tH2
 
   image:
     name: "hub.nexdev.net/nexops/sample1_website1_test:LOCAL-c8326490"
@@ -55,6 +55,7 @@ k8sdeployments:
           "todayPageUrl": "https://l2-seal-hot-league-wall-client-demo1.lumigame.com"
       }
 
+
   spFile:
     path: "/app/App_Data"
     name: "SpNames.xml"    
@@ -83,7 +84,8 @@ k8sdeployments:
               <Setting Key="TicketVoiding_VoidBetAutomation_Service_Upd" SpName="TicketVoiding_VoidBetAutomation_Service_Upd" DbName="DBTXN.bodb02.bodbAdminNet" TimeOut="600" />
               <Setting Key="Odds_BetTypeSel" SpName="Odds_BetTypeSel" DbName="DBODDSFEED.bodb_OddsFeed.bodbAdminNet" TimeOut="600" />
           </Function>
-      </Functions>  
+      </Functions>
+
 
 
   service:
