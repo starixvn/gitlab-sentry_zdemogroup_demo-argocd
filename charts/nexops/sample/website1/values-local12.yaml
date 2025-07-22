@@ -10,7 +10,7 @@ k8sdeployments:
     maxSurge: 25%
     maxUnavailable: 1
 
-  rollme: 7b803
+  rollme: 1e400
 
   image:
     name: "hub.nexdev.net/nexops/sample_website1:LOCAL_12-3d846efa"
@@ -24,25 +24,6 @@ k8sdeployments:
     periodSeconds: 5
     timeoutSeconds: 5
     startupFailureThreshold: 30
-
-  configFile:
-    path: "/app/."
-    name: "appsettings.json"    
-    content: |
-      {
-        "Logging": {
-          "LogLevel": {
-            "Default": "Information",
-            "Microsoft": "Warning",
-            "Microsoft.Hosting.Lifetime": "Information"
-          }
-        },
-        "AllowedHosts": "*",
-        "AppSettings": {
-          "SentryDsn": "http://d50bf7256dfd46219cd4f51e0d34e3b5@10.18.200.131:800/103",
-          "SentryEnvironment": "NexOps.Sample"
-        }
-      }
 
 
   spFile:
