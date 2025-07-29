@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: sample
-    name: default
+    name: local
   project: rocketor
   source:
     path: charts/nexops/sample/website1
