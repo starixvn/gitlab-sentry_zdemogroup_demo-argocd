@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: sample
-    name: k8s-starix-local
+    name: local
   project: rocketor
   source:
     path: charts/_shared/namespace-imagepullsecrets/sample

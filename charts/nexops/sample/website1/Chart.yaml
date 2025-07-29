@@ -26,4 +26,4 @@ appVersion: "1.16.0"
 dependencies:
   - name: k8sdeployments
     version: 1.3.3
-    repository: oci://hub.nexdev.net/charts
+    repository: oci://@REGISTRY_IMAGE/charts

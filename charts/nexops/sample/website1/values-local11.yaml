@@ -10,10 +10,10 @@ k8sdeployments:
     maxSurge: 25%
     maxUnavailable: 1
 
-  rollme: 15e9e
+  rollme: d6585
 
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_11-e24f5596"
+    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_11-2797a2ed"
     pullPolicy: Always
     pullSecretName: argocd-regcred-secret
 
