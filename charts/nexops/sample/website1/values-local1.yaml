@@ -10,13 +10,15 @@ k8sdeployments:
     maxSurge: 25%
     maxUnavailable: 0
 
+  rollme: 649e4
+
   image:
-    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_1-deb53684"
+    name: "hub.nexdev.net/nexops/sample_website1:LOCAL_1-ed640668"
     pullPolicy: Always
     pullSecretName: argocd-regcred-secret
 
   healthCheck:
-    enabled: true
+    enabled: false
     path: /
     failureThreshold: 5
     periodSeconds: 5
@@ -41,6 +43,7 @@ k8sdeployments:
           "SentryEnvironment": "NexOps.Sample"
         }
       }
+
 
   spFile:
     path: "/app/App_Data"
@@ -73,6 +76,7 @@ k8sdeployments:
       </Functions>
 
 
+
   service:
   # kind of types: ClusterIP, NodePort, LoadBalancer
     type: ClusterIP
@@ -85,24 +89,23 @@ k8sdeployments:
     stickySessions: false
     className: haproxy
     hosts:
-      - host: sample1.nexdev.net
+      - host: m-sample1.nexdev.net
         paths:
-          - path: /local
-            pathType: Prefix
-      - host: sample1.nexdev.net
-        paths:
-          - path: /local2
-            pathType: Prefix
-      - host: sample1.nexdev.net
-        paths:
-          - path: /local3
+          - path: /
             pathType: Prefix
 
+  pvc:
+    create: true
+    storage: 512Mi
 
+  volumes:
+    - name: website1
+      mountPath: /data/
+      sharedPVC: 
 
   resources:
     limits:
-      memory: 2048Mi
+      memory: 1024Mi
     requests:
       memory: 16Mi
 
